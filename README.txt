@@ -1,5 +1,5 @@
                     =====================================
-                      Package "Bit::Vector" Version 6.1
+                      Package "Bit::Vector" Version 6.2
                     =====================================
 
 
@@ -30,15 +30,19 @@ overloaded operators for maximum ease of use.
 The C library can nevertheless be used stand-alone, without Perl.
 
 
-What's new in version 6.1:
+What's new in version 6.2:
 --------------------------
 
-Version 6.1 is a bugfix release.
-
-Two bugs have been fixed: The failing tests with overloaded
-operators under Perl 5.7.1 and Perl 5.7.2, and the problem
-with the VMS linker which can't differentiate case (in
-violation of the ANSI C standard).
+ +  Fixed missing "\" in regular expression in "t/00____version.t".
+ +  Overhauled the error handlers in "BitVector.c" and "Vector.xs".
+ +  Added a demo "examples/test.c" to play around with the C library.
+ +  Attempted to fix all compiler warnings.
+ +  Fixed a problem in test "t/01________new.t" with Perl using
+    64 bit integers; now contains "use integer;" to avoid failure.
+ +  Synchronized "Carp::Clan" and "ToolBox.h" with "Date::Calc" 5.2.
+ +  Revealed common method aliases (Or, And, etc.) in the documentation.
+ +  Fixed GCD(), now GCD(x,0) == GCD(0,x) == x and negative values
+    are handled correctly.
 
 
 Legal issues:
@@ -46,7 +50,7 @@ Legal issues:
 
 This package with all its parts is
 
-Copyright (c) 1995 - 2001 by Steffen Beyer.
+Copyright (c) 1995 - 2002 by Steffen Beyer.
 All rights reserved.
 
 This package is free software; you can use, modify and redistribute
@@ -93,21 +97,21 @@ the "zip" archive.
 Note to CPAN Testers:
 ---------------------
 
-Version 6.1 of this module has already been tested successfully
-during development with the following configurations:
+After completion, version 6.2 of this module has already
+been tested successfully with the following configurations:
 
-  Perl 5.003     -  Solaris 2.6 (SunOS 5.6)
-  Perl 5.003_07  -  Solaris 2.6 (SunOS 5.6)
-  Perl 5.004_04  -  Solaris 2.6 (SunOS 5.6)
-  Perl 5.004_05  -  Solaris 2.6 (SunOS 5.6)
   Perl 5.005_03  -  FreeBSD 4.1.1-RELEASE (with "dlopen() relative paths" patch)
-  Perl 5.005_03  -  Windows NT 4.0 & MS VC++ 6.0 (native Perl build)
   Perl 5.6.0     -  FreeBSD 4.1.1-RELEASE
   Perl 5.6.1     -  FreeBSD 4.1.1-RELEASE
-  Perl 5.6.1     -  Windows NT 4.0 & ActivePerl 5.6.1.626 (multi-thread)
   Perl 5.7.0     -  FreeBSD 4.1.1-RELEASE
   Perl 5.7.1     -  FreeBSD 4.1.1-RELEASE
   Perl 5.7.2     -  FreeBSD 4.1.1-RELEASE
+  Perl 5.8.0     -  FreeBSD 4.1.1-RELEASE
+  Perl 5.005_03  -  FreeBSD 4.6-STABLE
+  Perl 5.6.1     -  FreeBSD 4.6-STABLE
+  Perl 5.005_03  -  Windows NT 4.0 & MS VC++ 6.0 (native Perl build)
+  Perl 5.8.0     -  Windows NT 4.0 & MS VC++ 6.0 (native Perl build)
+  Perl 5.6.1     -  Windows NT 4.0 & ActivePerl 5.6.1.633 (multi-thread)
 
 
 Installation:
