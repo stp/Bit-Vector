@@ -2,7 +2,7 @@
 
 /*****************************************************************************/
 /*                                                                           */
-/*    Copyright (c) 1995, 1996, 1997, 1998 by Steffen Beyer.                 */
+/*    Copyright (c) 1995, 1996, 1997, 1998, 1999 by Steffen Beyer.           */
 /*    All rights reserved.                                                   */
 /*                                                                           */
 /*    This package is free software; you can redistribute it                 */
@@ -92,7 +92,7 @@ typedef     SV *BitVector_Scalar;
     BIT_VECTOR_ERROR(name,"matrix size mismatch")
 
 #define BIT_VECTOR_SHAPE_ERROR(name) \
-    BIT_VECTOR_ERROR(name,"matrix is not quadratic")
+    BIT_VECTOR_ERROR(name,"not a square matrix")
 
 #define BIT_VECTOR_SYNTAX_ERROR(name) \
     BIT_VECTOR_ERROR(name,"input string syntax error")
@@ -2881,6 +2881,60 @@ CODE:
         else BIT_VECTOR_SCALAR_ERROR("Multiplication");
     }
     else BIT_VECTOR_OBJECT_ERROR("Multiplication");
+}
+
+
+void
+Matrix_Product(Xref,Xrows,Xcols,Yref,Yrows,Ycols,Zref,Zrows,Zcols)
+BitVector_Object	Xref
+BitVector_Scalar	Xrows
+BitVector_Scalar	Xcols
+BitVector_Object	Yref
+BitVector_Scalar	Yrows
+BitVector_Scalar	Ycols
+BitVector_Object	Zref
+BitVector_Scalar	Zrows
+BitVector_Scalar	Zcols
+CODE:
+{
+    BitVector_Handle  Xhdl;
+    BitVector_Address Xadr;
+    BitVector_Handle  Yhdl;
+    BitVector_Address Yadr;
+    BitVector_Handle  Zhdl;
+    BitVector_Address Zadr;
+    N_int rowsX;
+    N_int colsX;
+    N_int rowsY;
+    N_int colsY;
+    N_int rowsZ;
+    N_int colsZ;
+
+    if ( BIT_VECTOR_OBJECT(Xref,Xhdl,Xadr) &&
+         BIT_VECTOR_OBJECT(Yref,Yhdl,Yadr) &&
+         BIT_VECTOR_OBJECT(Zref,Zhdl,Zadr) )
+    {
+        if ( BIT_VECTOR_SCALAR(Xrows,N_int,rowsX) &&
+             BIT_VECTOR_SCALAR(Xcols,N_int,colsX) &&
+             BIT_VECTOR_SCALAR(Yrows,N_int,rowsY) &&
+             BIT_VECTOR_SCALAR(Ycols,N_int,colsY) &&
+             BIT_VECTOR_SCALAR(Zrows,N_int,rowsZ) &&
+             BIT_VECTOR_SCALAR(Zcols,N_int,colsZ) )
+        {
+            if ((colsY == rowsZ) and (rowsX == rowsY) and (colsX == colsZ) and
+                (bits_(Xadr) == rowsX*colsX) and
+                (bits_(Yadr) == rowsY*colsY) and
+                (bits_(Zadr) == rowsZ*colsZ))
+            {
+                Matrix_Product(Xadr,rowsX,colsX,
+                               Yadr,rowsY,colsY,
+                               Zadr,rowsZ,colsZ);
+            }
+            else BIT_VECTOR_MATRIX_ERROR("Product");
+        }
+        else BIT_VECTOR_SCALAR_ERROR("Product");
+    }
+    else BIT_VECTOR_OBJECT_ERROR("Product");
 }
 
 

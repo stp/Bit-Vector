@@ -1,5 +1,5 @@
                     =====================================
-                      Package "Bit::Vector" Version 5.6
+                      Package "Bit::Vector" Version 5.7
                     =====================================
 
 
@@ -24,7 +24,7 @@ Legal issues:
 
 This package with all its parts is
 
-Copyright (c) 1995, 1996, 1997, 1998 by Steffen Beyer.
+Copyright (c) 1995, 1996, 1997, 1998, 1999 by Steffen Beyer.
 All rights reserved.
 
 This package is free software; you can redistribute it and/or
@@ -57,7 +57,9 @@ Changes over previous versions:
 -------------------------------
 
 Please refer to the file "CHANGES.txt" in this distribution for a detailed
-version history and instructions on how to upgrade existing applications.
+version history. See the two scripts in the subdirectory "tools" in this
+distribution in order to automatically upgrade your existing applications
+from "Set::IntegerFast" versions 3.* and "Bit::Vector" versions 4.*.
 
 
 Documentation:
@@ -177,7 +179,8 @@ Index_List_Remove()      Index_List_Store()       Index_List_Read()
 Union()                  Intersection()           Difference()
 ExclusiveOr()            Complement()             subset()
 Norm()                   Min()                    Max()
-Multiplication()         Closure()                Transpose()
+Multiplication()         Product()                Closure()
+Transpose()
 
 
 Important note to C developers:

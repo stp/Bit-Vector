@@ -212,6 +212,10 @@ void    Matrix_Multiplication(wordptr X, N_int rowsX, N_int colsX,
                               wordptr Y, N_int rowsY, N_int colsY,
                               wordptr Z, N_int rowsZ, N_int colsZ);
 
+void    Matrix_Product       (wordptr X, N_int rowsX, N_int colsX,
+                              wordptr Y, N_int rowsY, N_int colsY,
+                              wordptr Z, N_int rowsZ, N_int colsZ);
+
 void    Matrix_Closure       (wordptr addr, N_int rows, N_int cols);
 
 void    Matrix_Transpose     (wordptr X, N_int rowsX, N_int colsX,
@@ -230,11 +234,12 @@ void    Matrix_Transpose     (wordptr X, N_int rowsX, N_int colsX,
 /*****************************************************************************/
 
 /*****************************************************************************/
-/*  VERSION:  5.6                                                            */
+/*  VERSION:  5.7                                                            */
 /*****************************************************************************/
 /*  VERSION HISTORY:                                                         */
 /*****************************************************************************/
 /*                                                                           */
+/*    Version 5.7  19.05.99  Quickened "Div_Pos()". Added "Product()".       */
 /*    Version 5.6  02.11.98  Leading zeros eliminated in "to_Hex()".         */
 /*    Version 5.5  21.09.98  Fixed bug of uninitialized "error" in Multiply. */
 /*    Version 5.4  07.09.98  Fixed bug of uninitialized "error" in Divide.   */
@@ -270,7 +275,7 @@ void    Matrix_Transpose     (wordptr X, N_int rowsX, N_int colsX,
 /*  COPYRIGHT:                                                               */
 /*****************************************************************************/
 /*                                                                           */
-/*    Copyright (c) 1995, 1996, 1997, 1998 by Steffen Beyer.                 */
+/*    Copyright (c) 1995, 1996, 1997, 1998, 1999 by Steffen Beyer.           */
 /*    All rights reserved.                                                   */
 /*                                                                           */
 /*****************************************************************************/

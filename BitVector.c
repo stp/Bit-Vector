@@ -212,6 +212,10 @@ void    Matrix_Multiplication(wordptr X, N_int rowsX, N_int colsX,
                               wordptr Y, N_int rowsY, N_int colsY,
                               wordptr Z, N_int rowsZ, N_int colsZ);
 
+void    Matrix_Product       (wordptr X, N_int rowsX, N_int colsX,
+                              wordptr Y, N_int rowsY, N_int colsY,
+                              wordptr Z, N_int rowsZ, N_int colsZ);
+
 void    Matrix_Closure       (wordptr addr, N_int rows, N_int cols);
 
 void    Matrix_Transpose     (wordptr X, N_int rowsX, N_int colsX,
@@ -503,7 +507,7 @@ N_word BitVector_Mask(N_int bits)           /* bit vector mask (unused bits) */
 
 charptr BitVector_Version(void)
 {
-    return((charptr)"5.6");
+    return((charptr)"5.7");
 }
 
 N_int BitVector_Word_Bits(void)
@@ -2460,9 +2464,9 @@ Z_int BitVector_Sign(wordptr addr)
 
 ErrCode BitVector_Mul_Pos(wordptr X, wordptr Y, wordptr Z)
 {
-    Z_long  max;
-    N_int   limit;
-    N_int   count;
+    Z_long  last;
+    N_word  limit;
+    N_word  count;
     boolean ok = true;
 
     /*
@@ -2477,8 +2481,8 @@ ErrCode BitVector_Mul_Pos(wordptr X, wordptr Y, wordptr Z)
     if (bits_(X) != bits_(Y)) return(ErrCode_Size);
     BitVector_Empty(X);
     if (BitVector_is_empty(Y)) return(ErrCode_Ok);
-    if ((max = Set_Max(Z)) < 0L) return(ErrCode_Ok);
-    limit = (N_int) max;
+    if ((last = Set_Max(Z)) < 0L) return(ErrCode_Ok);
+    limit = (N_word) last;
     for ( count = 0; (ok and (count <= limit)); count++ )
     {
         if ( BIT_VECTOR_TST_BIT(Z,count) )
@@ -2577,9 +2581,12 @@ ErrCode BitVector_Multiply(wordptr X, wordptr Y, wordptr Z)
 
 ErrCode BitVector_Div_Pos(wordptr Q, wordptr X, wordptr Y, wordptr R)
 {
-    N_word  bits  = bits_(Q);
-    boolean carry = false;
-    boolean valid = true; /* flags wether valid rest is in R (t) or X (f) */
+    N_word  bits = bits_(Q);
+    N_word  mask;
+    wordptr addr;
+    Z_long  last;
+    boolean flag;
+    boolean copy = false; /* flags wether valid rest is in R (0) or X (1) */
 
     /*
        Requirements:
@@ -2599,32 +2606,32 @@ ErrCode BitVector_Div_Pos(wordptr Q, wordptr X, wordptr Y, wordptr R)
         return(ErrCode_Zero);
 
     BitVector_Empty(R);
-    if (BitVector_is_empty(X))
+    BitVector_Copy(Q,X);
+    if ((last = Set_Max(Q)) < 0L) return(ErrCode_Ok);
+    bits = (N_word) ++last;
+    while (bits-- > 0)
     {
-        BitVector_Empty(Q);
-    }
-    else
-    {
-        BitVector_Copy(Q,X);
-        while (bits-- > 0)
+        addr = Q + (bits >> LOGBITS);
+        mask = BITMASKTAB[bits AND MODMASK];
+        flag = ((*addr AND mask) != 0);
+        if (copy)
         {
-            carry = BitVector_shift_left(Q,carry);
-            if (valid)
-            {
-                BitVector_shift_left(R,carry);
-                carry = not BitVector_subtract(X,R,Y,0);
-                if (carry) valid = false;
-            }
-            else
-            {
-                BitVector_shift_left(X,carry);
-                carry = not BitVector_subtract(R,X,Y,0);
-                if (carry) valid = true;
-            }
+            BitVector_shift_left(X,flag);
+            flag = BitVector_subtract(R,X,Y,0);
         }
-        BitVector_shift_left(Q,carry);
-        if (not valid) BitVector_Copy(R,X);
+        else
+        {
+            BitVector_shift_left(R,flag);
+            flag = BitVector_subtract(X,R,Y,0);
+        }
+        if (flag) *addr &= NOT mask;
+        else
+        {
+            *addr |= mask;
+            copy = not copy;
+        }
     }
+    if (copy) BitVector_Copy(R,X);
     return(ErrCode_Ok);
 }
 
@@ -3136,6 +3143,47 @@ void Matrix_Multiplication(wordptr X, N_int rowsX, N_int colsX,
   }
 }
 
+void Matrix_Product(wordptr X, N_int rowsX, N_int colsX,
+                    wordptr Y, N_int rowsY, N_int colsY,
+                    wordptr Z, N_int rowsZ, N_int colsZ)
+{
+    N_word i;
+    N_word j;
+    N_word k;
+    N_word indxX;
+    N_word indxY;
+    N_word indxZ;
+    N_word termX;
+    N_word termY;
+    N_word sum;
+
+  if ((colsY == rowsZ) and (rowsX == rowsY) and (colsX == colsZ) and
+      (bits_(X) == rowsX*colsX) and
+      (bits_(Y) == rowsY*colsY) and
+      (bits_(Z) == rowsZ*colsZ))
+  {
+    for ( i = 0; i < rowsY; i++ )
+    {
+        termX = i * colsX;
+        termY = i * colsY;
+        for ( j = 0; j < colsZ; j++ )
+        {
+            indxX = termX + j;
+            sum = 0;
+            for ( k = 0; k < colsY; k++ )
+            {
+                indxY = termY + k;
+                indxZ = k * colsZ + j;
+                if ( BIT_VECTOR_TST_BIT(Y,indxY) &&
+                     BIT_VECTOR_TST_BIT(Z,indxZ) ) sum |= 1;
+            }
+            if (sum) BIT_VECTOR_SET_BIT(X,indxX)
+            else     BIT_VECTOR_CLR_BIT(X,indxX)
+        }
+    }
+  }
+}
+
 void Matrix_Closure(wordptr addr, N_int rows, N_int cols)
 {
     N_word i;
@@ -3257,11 +3305,12 @@ void Matrix_Transpose(wordptr X, N_int rowsX, N_int colsX,
 }
 
 /*****************************************************************************/
-/*  VERSION:  5.6                                                            */
+/*  VERSION:  5.7                                                            */
 /*****************************************************************************/
 /*  VERSION HISTORY:                                                         */
 /*****************************************************************************/
 /*                                                                           */
+/*    Version 5.7  19.05.99  Quickened "Div_Pos()". Added "Product()".       */
 /*    Version 5.6  02.11.98  Leading zeros eliminated in "to_Hex()".         */
 /*    Version 5.5  21.09.98  Fixed bug of uninitialized "error" in Multiply. */
 /*    Version 5.4  07.09.98  Fixed bug of uninitialized "error" in Divide.   */
@@ -3297,7 +3346,7 @@ void Matrix_Transpose(wordptr X, N_int rowsX, N_int colsX,
 /*  COPYRIGHT:                                                               */
 /*****************************************************************************/
 /*                                                                           */
-/*    Copyright (c) 1995, 1996, 1997, 1998 by Steffen Beyer.                 */
+/*    Copyright (c) 1995, 1996, 1997, 1998, 1999 by Steffen Beyer.           */
 /*    All rights reserved.                                                   */
 /*                                                                           */
 /*****************************************************************************/

@@ -11,7 +11,7 @@ use Bit::Vector;
 
 $prefix = 'Bit::Vector';
 
-print "1..920\n";
+print "1..948\n";
 
 $n = 1;
 
@@ -129,6 +129,7 @@ $method_list{'Norm'}                = [ 0 ];
 $method_list{'Min'}                 = [ 0 ];
 $method_list{'Max'}                 = [ 0 ];
 $method_list{'Multiplication'}      = [ 0, 11, 12, 0, 11, 12, 0, 11, 12 ];
+$method_list{'Product'}             = [ 0, 11, 12, 0, 11, 12, 0, 11, 12 ];
 $method_list{'Closure'}             = [ 0, 11, 12 ];
 $method_list{'Transpose'}           = [ 0, 11, 12, 0, 11, 12 ];
 
@@ -150,7 +151,7 @@ foreach $method (keys %method_list)
         {print "ok $n\n";} else {print "not ok $n\n";}
         $n++;
         $action = "\$dummy = ${prefix}::${method}(\$dummy,\$dummy);";
-        $message = "^Usage: ${prefix}->${method}\\(\\)";
+        $message = "Usage: ${prefix}->${method}\\(\\)";
         eval "$action";
         if ($@ =~ /$message/)
         {print "ok $n\n";} else {print "not ok $n\n";}
@@ -194,13 +195,13 @@ foreach $method (keys %method_list)
                 &refresh();
                 pop(@parameter_list);
                 eval "$action";
-                if ($@ =~ /^$message/)
+                if ($@ =~ /$message/)
                 {print "ok $n\n";} else {print "not ok $n\n";}
                 $n++;
                 &refresh();
                 push(@parameter_list,0);
                 eval "$action";
-                if ($@ =~ /^$message/)
+                if ($@ =~ /$message/)
                 {print "ok $n\n";} else {print "not ok $n\n";}
                 $n++;
             }
@@ -216,7 +217,7 @@ foreach $method (keys %method_list)
                     $parameter_list[$i] = $wrong_values[$type]->[$j];
                     $message = $leadin . $error_message[$type]->[$j];
                     eval "$action";
-                    if ($@ =~ /^$message/)
+                    if ($@ =~ /$message/)
                     {print "ok $n\n";} else {print "not ok $n\n";}
                     $n++;
                 }
