@@ -2,7 +2,7 @@
 
 /*****************************************************************************/
 /*                                                                           */
-/*    Copyright (c) 1995 - 2004 by Steffen Beyer.                            */
+/*    Copyright (c) 1995 - 2009 by Steffen Beyer.                            */
 /*    All rights reserved.                                                   */
 /*                                                                           */
 /*    This package is free software; you can redistribute it                 */
@@ -69,6 +69,15 @@ const char *BitVector_SIZE_ERROR   = ERRCODE_SIZE;
     (SvTYPE(hdl) == SVt_PVMG) && \
     (SvSTASH(hdl) == BitVector_Stash) && \
     (adr = (BitVector_Address)SvIV(hdl)) )
+
+#define BIT_VECTOR_FAKE_OBJECT(ref,hdl) \
+    ( ref && \
+    SvROK(ref) && \
+    (hdl = (BitVector_Handle)SvRV(ref)) && \
+    SvOBJECT(hdl) && \
+    !SvREADONLY(hdl) && \
+    (SvTYPE(hdl) == SVt_PVMG) && \
+    (SvSTASH(hdl) == BitVector_Stash) )
 
 #define BIT_VECTOR_SCALAR(ref,typ,var) \
     ( ref && !(SvROK(ref)) && ((var = (typ)SvIV(ref)) | 1) )
@@ -614,6 +623,31 @@ CODE:
         {
             address = BitVector_Resize(address,size);
             SvREADONLY_off(handle);
+            sv_setiv(handle,(IV)address);
+            SvREADONLY_on(handle);
+            if (address == NULL) BIT_VECTOR_MEMORY_ERROR;
+        }
+        else BIT_VECTOR_SCALAR_ERROR;
+    }
+    else BIT_VECTOR_OBJECT_ERROR;
+}
+
+
+void
+BitVector_Unfake(reference,bits)
+BitVector_Object	reference
+BitVector_Scalar	bits
+CODE:
+{
+    BitVector_Handle  handle;
+    BitVector_Address address;
+    N_int size;
+
+    if ( BIT_VECTOR_FAKE_OBJECT(reference,handle) )
+    {
+        if ( BIT_VECTOR_SCALAR(bits,N_int,size) )
+        {
+            address = BitVector_Create(size,true);
             sv_setiv(handle,(IV)address);
             SvREADONLY_on(handle);
             if (address == NULL) BIT_VECTOR_MEMORY_ERROR;
