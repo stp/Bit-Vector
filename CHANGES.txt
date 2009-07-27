@@ -1,5 +1,5 @@
                     =====================================
-                      Package "Bit::Vector" Version 6.5
+                      Package "Bit::Vector" Version 6.6
                     =====================================
 
 
@@ -9,6 +9,10 @@
 
 Version history:
 ----------------
+
+Version 6.6   27.07.2009
+
+ +  Made the module thread-safe and MacOS X compatible
 
 Version 6.5   27.07.2009
 

@@ -1,5 +1,5 @@
                     =====================================
-                      Package "Bit::Vector" Version 6.5
+                      Package "Bit::Vector" Version 6.6
                     =====================================
 
 
@@ -30,10 +30,10 @@ overloaded operators for maximum ease of use.
 The C library can nevertheless be used stand-alone, without Perl.
 
 
-What's new in version 6.5:
+What's new in version 6.6:
 --------------------------
 
- +  Added automatic support for module "Storable"
+ +  Made the module thread-safe and MacOS X compatible
 
 
 Legal issues:
@@ -114,7 +114,7 @@ the "zip" archive.
 Note to CPAN Testers:
 ---------------------
 
-After completion, version 6.5 of this module has already
+After completion, version 6.6 of this module has already
 been tested successfully with the following configurations:
 
   Perl 5.8.0     -  Windows XP SP3 & MS VC++ 6.0 (native Perl build)

@@ -87,7 +87,7 @@ while (($start < $set->Size()) &&
         if ($bits > 0)
         {
             $vector->Flip();
-    
+
             $twin = thaw(freeze($vector));
             if ($twin->Size() == $bits)
             {print "ok $n\n";} else {print "not ok $n\n";} # 09
@@ -98,7 +98,7 @@ while (($start < $set->Size()) &&
             if ($vector->equal($twin))
             {print "ok $n\n";} else {print "not ok $n\n";} # 11
             $n++;
-    
+
             if (${$twin} != ${$clone})
             {print "ok $n\n";} else {print "not ok $n\n";} # 12
             $n++;
@@ -109,7 +109,7 @@ while (($start < $set->Size()) &&
             if ($twin->equal($clone))
             {print "ok $n\n";} else {print "not ok $n\n";} # 14
             $n++;
-    
+
             $clone = dclone($vector);
             if ($clone->Size() == $bits)
             {print "ok $n\n";} else {print "not ok $n\n";} # 15
@@ -120,7 +120,7 @@ while (($start < $set->Size()) &&
             if ($vector->equal($clone))
             {print "ok $n\n";} else {print "not ok $n\n";} # 17
             $n++;
-    
+
             if (${$twin} != ${$clone})
             {print "ok $n\n";} else {print "not ok $n\n";} # 18
             $n++;

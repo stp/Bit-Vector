@@ -46,3 +46,4 @@ t/30__overloaded.t
 t/40___auxiliary.t
 t/50_freeze_thaw.t
 typemap
+META.yml                                 Module meta-data (added by MakeMaker)
