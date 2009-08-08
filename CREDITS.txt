@@ -1,5 +1,5 @@
                     =====================================
-                      Package "Bit::Vector" Version 6.6
+                      Package "Bit::Vector" Version 6.7
                     =====================================
 
 
@@ -200,5 +200,8 @@ Miyagawa (?) and Alistair Francis for providing patches.
 
 Also many thanks to Joost Diepenmaat <jdiepen@cpan.org> for alerting
 me about Bit::Vector not being thread-safe, and for providing a patch.
+
+Thanks a lot to Adam Kennedy <adamk@cpan.org> for telling me
+about STORABLE_attach.
 
 

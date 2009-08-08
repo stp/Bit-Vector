@@ -1,5 +1,5 @@
                     =====================================
-                      Package "Bit::Vector" Version 6.6
+                      Package "Bit::Vector" Version 6.7
                     =====================================
 
 
@@ -9,6 +9,10 @@
 
 Version history:
 ----------------
+
+Version 6.7   08.08.2009
+
+ +  Replaced STORABLE_thaw by STORABLE_attach
 
 Version 6.6   27.07.2009
 

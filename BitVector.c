@@ -615,7 +615,7 @@ N_word BitVector_Mask(N_int bits)           /* bit vector mask (unused bits) */
 
 charptr BitVector_Version(void)
 {
-    return((charptr)"6.6");
+    return((charptr)"6.7");
 }
 
 N_int BitVector_Word_Bits(void)
@@ -3820,11 +3820,12 @@ void Matrix_Transpose(wordptr X, N_int rowsX, N_int colsX,
 }
 
 /*****************************************************************************/
-/*  VERSION:  6.6                                                            */
+/*  VERSION:  6.7                                                            */
 /*****************************************************************************/
 /*  VERSION HISTORY:                                                         */
 /*****************************************************************************/
 /*                                                                           */
+/*    Version 6.7  08.08.09  No changes.                                     */
 /*    Version 6.6  27.07.09  Made it thread-safe and MacOS X compatible.     */
 /*    Version 6.5  27.07.09  Added automatic support for module "Storable".  */
 /*    Version 6.4  03.10.04  Added C++ comp. directives. Improved "Norm()".  */

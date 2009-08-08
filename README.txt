@@ -1,5 +1,5 @@
                     =====================================
-                      Package "Bit::Vector" Version 6.6
+                      Package "Bit::Vector" Version 6.7
                     =====================================
 
 
@@ -30,10 +30,10 @@ overloaded operators for maximum ease of use.
 The C library can nevertheless be used stand-alone, without Perl.
 
 
-What's new in version 6.6:
+What's new in version 6.7:
 --------------------------
 
- +  Made the module thread-safe and MacOS X compatible
+ +  Replaced STORABLE_thaw by STORABLE_attach
 
 
 Legal issues:
@@ -114,11 +114,11 @@ the "zip" archive.
 Note to CPAN Testers:
 ---------------------
 
-After completion, version 6.6 of this module has already
+After completion, version 6.7 of this module has already
 been tested successfully with the following configurations:
 
   Perl 5.8.0     -  Windows XP SP3 & MS VC++ 6.0 (native Perl build)
-  Perl 5.8.8     -  FreeBSD 5.5-PRERELEASE
+  Perl 5.10.0    -  FreeBSD 7.2-STABLE
 
 
 Installation:

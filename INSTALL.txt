@@ -1,5 +1,5 @@
                     =====================================
-                      Package "Bit::Vector" Version 6.6
+                      Package "Bit::Vector" Version 6.7
                     =====================================
 
 
@@ -79,7 +79,7 @@ Edit the file "Makefile.PL" and change the line
 
     'VERSION_FROM'      => 'Vector.pm',
 to
-    'VERSION'           => '6.6',
+    'VERSION'           => '6.7',
 
 Then edit the file "Vector.pm" and change the line
 
@@ -89,7 +89,7 @@ to
 
 Also edit the file "t/00____version.t" and change the line
 
-    use Bit::Vector 6.6;
+    use Bit::Vector 6.7;
 
 to
 
@@ -133,7 +133,7 @@ Detailed installation guide:
 ----------------------------
 
  1) Change directory to the directory that has been created by unpacking this
-    package ("cd Bit-Vector-6.6").
+    package ("cd Bit-Vector-6.7").
 
  2) Type "perl Makefile.PL" (or whatever the name and path of your Perl 5
     binary is).

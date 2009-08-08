@@ -314,11 +314,12 @@ extern const N_int BitVector_BYTENORM[256];
 /*****************************************************************************/
 
 /*****************************************************************************/
-/*  VERSION:  6.6                                                            */
+/*  VERSION:  6.7                                                            */
 /*****************************************************************************/
 /*  VERSION HISTORY:                                                         */
 /*****************************************************************************/
 /*                                                                           */
+/*    Version 6.7  08.08.09  No changes.                                     */
 /*    Version 6.6  27.07.09  Made it thread-safe and MacOS X compatible.     */
 /*    Version 6.5  27.07.09  Added automatic support for module "Storable".  */
 /*    Version 6.4  03.10.04  Added C++ comp. directives. Improved "Norm()".  */
