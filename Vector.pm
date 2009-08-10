@@ -23,7 +23,7 @@ require DynaLoader;
 
 @EXPORT_OK = qw();
 
-$VERSION = '6.7';
+$VERSION = '6.8';
 
 bootstrap Bit::Vector $VERSION;
 
@@ -33,14 +33,22 @@ sub STORABLE_freeze
     return( Storable::freeze( [ $self->Size(), $self->Block_Read() ] ) );
 }
 
-sub STORABLE_attach
+sub STORABLE_thaw
 {
-    my($class, $clone, $string) = @_;
+    my($self, $clone, $string) = @_;
     my($size,$buffer) = @{ Storable::thaw($string) };
-    my $self = Bit::Vector->new($size);
+    $self->Unfake($size); # Undocumented new feature (slightly dangerous!) - for use by Storable only!
     $self->Block_Store($buffer);
-    return $self;
 }
+
+#sub STORABLE_attach # Does not work properly in nested data structures (see test cases)
+#{
+#    my($class, $clone, $string) = @_;
+#    my($size,$buffer) = @{ Storable::thaw($string) };
+#    my $self = Bit::Vector->new($size);
+#    $self->Block_Store($buffer);
+#    return $self;
+#}
 
 1;
 

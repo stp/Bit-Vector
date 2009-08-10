@@ -44,7 +44,7 @@ typedef wordptr *listptr;
 
 charptr BitVector_Error      (ErrCode error);  /* return string for err code */
 
-ErrCode BitVector_Boot       (void);                 /* 0 = ok, 1..7 = error */
+ErrCode BitVector_Boot       (void);                /* 0 = ok, 1..16 = error */
 
 N_word  BitVector_Size       (N_int bits);  /* bit vector size (# of words)  */
 N_word  BitVector_Mask       (N_int bits);  /* bit vector mask (unused bits) */
@@ -335,7 +335,7 @@ static N_word EXP10;    /* = largest possible power of 10 in signed int      */
     /* global bit mask table for fast access (set by "BitVector_Boot"): */
     /********************************************************************/
 
-#define MASKTABSIZE 256
+#define MASKTABSIZE (sizeof(N_word) << 3)
 
 static N_word BITMASKTAB[MASKTABSIZE];
 
@@ -584,10 +584,12 @@ ErrCode BitVector_Boot(void)
     {
         BITMASKTAB[sample] = (LSB << sample);
     }
+/*
     for ( sample = BITS; sample < MASKTABSIZE; sample++ )
     {
         BITMASKTAB[sample] = 0;
     }
+*/
 
     LOG10 = (N_word) (MODMASK * 0.30103); /* = (BITS - 1) * ( ln 2 / ln 10 ) */
     EXP10 = power10(LOG10);
@@ -615,7 +617,7 @@ N_word BitVector_Mask(N_int bits)           /* bit vector mask (unused bits) */
 
 charptr BitVector_Version(void)
 {
-    return((charptr)"6.7");
+    return((charptr)"6.8");
 }
 
 N_int BitVector_Word_Bits(void)
@@ -3820,11 +3822,12 @@ void Matrix_Transpose(wordptr X, N_int rowsX, N_int colsX,
 }
 
 /*****************************************************************************/
-/*  VERSION:  6.7                                                            */
+/*  VERSION:  6.8                                                            */
 /*****************************************************************************/
 /*  VERSION HISTORY:                                                         */
 /*****************************************************************************/
 /*                                                                           */
+/*    Version 6.8  10.08.09  Fixed hard-coded table size MASKTABSIZE.        */
 /*    Version 6.7  08.08.09  No changes.                                     */
 /*    Version 6.6  27.07.09  Made it thread-safe and MacOS X compatible.     */
 /*    Version 6.5  27.07.09  Added automatic support for module "Storable".  */

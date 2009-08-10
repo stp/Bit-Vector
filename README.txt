@@ -1,5 +1,5 @@
                     =====================================
-                      Package "Bit::Vector" Version 6.7
+                      Package "Bit::Vector" Version 6.8
                     =====================================
 
 
@@ -30,10 +30,28 @@ overloaded operators for maximum ease of use.
 The C library can nevertheless be used stand-alone, without Perl.
 
 
-What's new in version 6.7:
+What's new in version 6.8:
 --------------------------
 
- +  Replaced STORABLE_thaw by STORABLE_attach
+ +  Fixed the bug of Storable not reconstructing nested data
+    structures properly which contain several references to
+    the same Bit::Vector object
+ +  Fixed hard-coded table size MASKTABSIZE in BitVector.c
+ +  Small cosmetic fixes to the documentation
+
+
+What's new since version 6.5:
+-----------------------------
+
+Object persistence:
+
+Since version 6.5, "Bit::Vector" objects can be serialized
+and de-serialized automatically with "Storable", out-of-the-box,
+without requiring any further user action for this to work.
+
+This is also true for nested data structures (since version 6.8).
+
+See the "Storable" documentation for more details.
 
 
 Legal issues:
@@ -114,7 +132,7 @@ the "zip" archive.
 Note to CPAN Testers:
 ---------------------
 
-After completion, version 6.7 of this module has already
+After completion, version 6.8 of this module has already
 been tested successfully with the following configurations:
 
   Perl 5.8.0     -  Windows XP SP3 & MS VC++ 6.0 (native Perl build)
