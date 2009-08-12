@@ -1,5 +1,5 @@
                     =====================================
-                      Package "Bit::Vector" Version 6.8
+                      Package "Bit::Vector" Version 6.9
                     =====================================
 
 
@@ -9,6 +9,13 @@
 
 Version history:
 ----------------
+
+Version 6.9   12.08.2009
+
+ +  Replaced Storable::freeze by Storable::nfreeze
+ +  Added more test cases for Storable
+ +  Added two example files showing how to freeze/thaw
+    using Data::Dumper
 
 Version 6.8   10.08.2009
 

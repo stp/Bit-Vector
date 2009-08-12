@@ -315,11 +315,12 @@ extern const N_int BitVector_BYTENORM[256];
 /*****************************************************************************/
 
 /*****************************************************************************/
-/*  VERSION:  6.8                                                            */
+/*  VERSION:  6.9                                                            */
 /*****************************************************************************/
 /*  VERSION HISTORY:                                                         */
 /*****************************************************************************/
 /*                                                                           */
+/*    Version 6.9  12.08.09  Removed an obsolete warning (memory leak).      */
 /*    Version 6.8  10.08.09  Fixed hard-coded table size MASKTABSIZE.        */
 /*    Version 6.7  08.08.09  No changes.                                     */
 /*    Version 6.6  27.07.09  Made it thread-safe and MacOS X compatible.     */

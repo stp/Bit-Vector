@@ -23,14 +23,14 @@ require DynaLoader;
 
 @EXPORT_OK = qw();
 
-$VERSION = '6.8';
+$VERSION = '6.9';
 
 bootstrap Bit::Vector $VERSION;
 
 sub STORABLE_freeze
 {
     my($self, $clone) = @_;
-    return( Storable::freeze( [ $self->Size(), $self->Block_Read() ] ) );
+    return( Storable::nfreeze( [ $self->Size(), $self->Block_Read() ] ) );
 }
 
 sub STORABLE_thaw

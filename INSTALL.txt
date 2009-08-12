@@ -1,5 +1,5 @@
                     =====================================
-                      Package "Bit::Vector" Version 6.8
+                      Package "Bit::Vector" Version 6.9
                     =====================================
 
 
@@ -13,7 +13,6 @@ Contents:
     +   Prerequisites
     +   Preliminary steps for use with Perl prior to version 5.002
     +   Preliminary steps for use with ActiveState's port of Perl 5
-    +   How to install additional languages
     +   Installation
 
 
@@ -54,8 +53,9 @@ Windows 95/98 since the Win 95/98 command shell doesn't
 support the "&&" operator. You will need the Windows NT
 command shell ("cmd.exe") or the "4DOS" shell to be
 installed on your Windows 95/98 system first. Note that
-Windows NT and Windows 2000 are not affected and just
-work fine. I don't know about Windows XP, however.
+Windows NT, Windows 2000 and Windows XP are not affected
+and just work fine. I don't know about Windows Vista and
+Windows 7, however.
 
 Note that ActiveState provides precompiled binaries of
 this module for their Win32 port of Perl ("ActivePerl")
@@ -79,7 +79,7 @@ Edit the file "Makefile.PL" and change the line
 
     'VERSION_FROM'      => 'Vector.pm',
 to
-    'VERSION'           => '6.8',
+    'VERSION'           => '6.9',
 
 Then edit the file "Vector.pm" and change the line
 
@@ -89,7 +89,7 @@ to
 
 Also edit the file "t/00____version.t" and change the line
 
-    use Bit::Vector 6.8;
+    use Bit::Vector 6.9;
 
 to
 
@@ -133,7 +133,7 @@ Detailed installation guide:
 ----------------------------
 
  1) Change directory to the directory that has been created by unpacking this
-    package ("cd Bit-Vector-6.8").
+    package ("cd Bit-Vector-6.9").
 
  2) Type "perl Makefile.PL" (or whatever the name and path of your Perl 5
     binary is).
@@ -218,8 +218,9 @@ Detailed installation guide:
     t/30__overloaded.t .. ok
     t/40___auxiliary.t .. ok
     t/50_freeze_thaw.t .. ok
+    t/51_file_nstore.t .. ok
     All tests successful.
-    Files=22, Tests=81295, 14 wallclock secs (12.10 usr  0.18 sys +  2.37 cusr  0.38 csys = 15.02 CPU)
+    Files=23, Tests=90856, 15 wallclock secs (13.40 usr  0.30 sys +  2.83 cusr  0.57 csys = 17.10 CPU)
     Result: PASS
 
     (Note that the exact number of tests will depend on the number of bits
