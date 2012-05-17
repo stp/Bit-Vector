@@ -1,14 +1,18 @@
                     =====================================
-                      Package "Bit::Vector" Version 7.1
+                      Package "Bit::Vector" Version 7.2
                     =====================================
 
 
-                 Copyright (c) 1995 - 2009 by Steffen Beyer.
+                 Copyright (c) 1995 - 2012 by Steffen Beyer.
                              All rights reserved.
 
 
 Version history:
 ----------------
+
+Version 7.2   17.05.2012
+
+ +  Changed the definition of the "boolean" data type in ToolBox.h
 
 Version 7.1   29.09.2009
 

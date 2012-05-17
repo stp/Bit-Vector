@@ -1,9 +1,9 @@
                     =====================================
-                      Package "Bit::Vector" Version 7.1
+                      Package "Bit::Vector" Version 7.2
                     =====================================
 
 
-                 Copyright (c) 1995 - 2009 by Steffen Beyer.
+                 Copyright (c) 1995 - 2012 by Steffen Beyer.
                              All rights reserved.
 
 
@@ -213,5 +213,10 @@ version 6.8.
 Thanks a lot to Christopher Jones <c.jones@ucl.ac.uk> for notifying me
 about the failing tests in "t/28___chunklist.t" under MacOs X / Darwin
 and for running some test scripts on his machine for me.
+
+Many thanks to Nicholas, Zefram, Slaven Rezic and Andreas Koenig
+for providing a patch for the definition of the "boolean" data
+type in Toolbox.h:
+http://cpan.cpantesters.org/authors/id/A/AN/ANDK/patches/Bit-Vector-7.1-ZEFRAMish-01.patch.gz
 
 

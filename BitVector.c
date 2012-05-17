@@ -629,7 +629,7 @@ N_word BitVector_Mask(N_int bits)           /* bit vector mask (unused bits) */
 
 charptr BitVector_Version(void)
 {
-    return((charptr)"7.1");
+    return((charptr)"7.2");
 }
 
 N_int BitVector_Word_Bits(void)
@@ -3838,11 +3838,12 @@ void Matrix_Transpose(wordptr X, N_int rowsX, N_int colsX,
 }
 
 /*****************************************************************************/
-/*  VERSION:  7.1                                                            */
+/*  VERSION:  7.2                                                            */
 /*****************************************************************************/
 /*  VERSION HISTORY:                                                         */
 /*****************************************************************************/
 /*                                                                           */
+/*    Version 7.2  17.05.12  No changes.                                     */
 /*    Version 7.1  29.09.09  Added prefix "BV_" to all global identifiers.   */
 /*    Version 7.0  22.08.09  Fixed bugs in "GCD2()" and "Boot()".            */
 /*    Version 6.9  12.08.09  Removed an obsolete warning (memory leak).      */
@@ -3888,7 +3889,7 @@ void Matrix_Transpose(wordptr X, N_int rowsX, N_int colsX,
 /*  COPYRIGHT:                                                               */
 /*****************************************************************************/
 /*                                                                           */
-/*    Copyright (c) 1995 - 2009 by Steffen Beyer.                            */
+/*    Copyright (c) 1995 - 2012 by Steffen Beyer.                            */
 /*    All rights reserved.                                                   */
 /*                                                                           */
 /*****************************************************************************/
