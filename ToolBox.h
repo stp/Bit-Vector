@@ -155,7 +155,7 @@ typedef  Z_longword         *Z_longwordptr;
 /*  COPYRIGHT:                                                               */
 /*****************************************************************************/
 /*                                                                           */
-/*    Copyright (c) 1995 - 2012 by Steffen Beyer.                            */
+/*    Copyright (c) 1995 - 2013 by Steffen Beyer.                            */
 /*    All rights reserved.                                                   */
 /*                                                                           */
 /*****************************************************************************/

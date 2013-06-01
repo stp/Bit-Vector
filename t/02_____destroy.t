@@ -17,7 +17,8 @@ if (ref($set) eq '')
 {print "ok $n\n";} else {print "not ok $n\n";}
 $n++;
 eval { $set->DESTROY(); };
-if ($@ =~ /Can't call method "DESTROY" without a package or object reference/)
+if (($@ =~ /Can't call method "DESTROY" without a package or object reference/) ||
+    ($@ =~ /Can't locate object method "DESTROY" via package "1"/))
 {print "ok $n\n";} else {print "not ok $n\n";}
 $n++;
 eval { Bit::Vector::DESTROY($set); };

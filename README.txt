@@ -1,5 +1,5 @@
                     =====================================
-                      Package "Bit::Vector" Version 7.2
+                      Package "Bit::Vector" Version 7.3
                     =====================================
 
 
@@ -30,10 +30,10 @@ overloaded operators for maximum ease of use.
 The C library can nevertheless be used stand-alone, without Perl.
 
 
-What's new in version 7.2:
+What's new in version 7.3:
 --------------------------
 
- +  Changed the definition of the "boolean" data type in ToolBox.h
+ +  Fixed t/02_____destroy.t to make it pass on perl-5.17.11
 
 
 What's new since version 6.5:
@@ -55,7 +55,7 @@ Legal issues:
 
 This package with all its parts is
 
-Copyright (c) 1995 - 2012 by Steffen Beyer.
+Copyright (c) 1995 - 2013 by Steffen Beyer.
 All rights reserved.
 
 This package is free software; you can use, modify and redistribute
@@ -129,12 +129,10 @@ the "zip" archive.
 Note to CPAN Testers:
 ---------------------
 
-After completion, version 7.2 of this module has already
+After completion, version 7.3 of this module has already
 been tested successfully with the following configurations:
 
-  Perl 5.005_03  -  Windows XP SP3 & MS VC++ 6.0 (native Perl build)
-  Perl 5.8.0     -  Windows XP SP3 & MS VC++ 6.0 (native Perl build)
-  Perl 5.10.1    -  FreeBSD 7.2-STABLE
+  Perl 5.12.3    -  FreeBSD 8.2-PRERELEASE
 
 
 Installation:

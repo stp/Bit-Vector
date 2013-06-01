@@ -3148,7 +3148,7 @@ Graph::Kruskal(3).
 
 =head1 VERSION
 
-This man page documents "Bit::Vector" version 7.2.
+This man page documents "Bit::Vector" version 7.3.
 
 =head1 AUTHOR
 
@@ -3158,7 +3158,7 @@ This man page documents "Bit::Vector" version 7.2.
 
 =head1 COPYRIGHT
 
-Copyright (c) 1995 - 2012 by Steffen Beyer. All rights reserved.
+Copyright (c) 1995 - 2013 by Steffen Beyer. All rights reserved.
 
 =head1 LICENSE
 

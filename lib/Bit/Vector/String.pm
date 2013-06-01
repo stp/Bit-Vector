@@ -1,7 +1,7 @@
 
 ###############################################################################
 ##                                                                           ##
-##    Copyright (c) 2004 - 2012 by Steffen Beyer.                            ##
+##    Copyright (c) 2004 - 2013 by Steffen Beyer.                            ##
 ##    All rights reserved.                                                   ##
 ##                                                                           ##
 ##    This package is free software; you can redistribute it                 ##
@@ -24,7 +24,7 @@ require Exporter;
 
 @EXPORT_OK = qw();
 
-$VERSION = '7.2';
+$VERSION = '7.3';
 
 package Bit::Vector;
 

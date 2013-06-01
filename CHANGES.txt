@@ -1,14 +1,18 @@
                     =====================================
-                      Package "Bit::Vector" Version 7.2
+                      Package "Bit::Vector" Version 7.3
                     =====================================
 
 
-                 Copyright (c) 1995 - 2012 by Steffen Beyer.
+                 Copyright (c) 1995 - 2013 by Steffen Beyer.
                              All rights reserved.
 
 
 Version history:
 ----------------
+
+Version 7.3   01.06.2013
+
+ +  Fixed t/02_____destroy.t to make it pass on perl-5.17.11
 
 Version 7.2   17.05.2012
 
