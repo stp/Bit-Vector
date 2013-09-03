@@ -1,5 +1,5 @@
                     =====================================
-                      Package "Bit::Vector" Version 7.3
+                      Package "Bit::Vector" Version 7.4
                     =====================================
 
 
@@ -221,4 +221,13 @@ http://cpan.cpantesters.org/authors/id/A/AN/ANDK/patches/Bit-Vector-7.1-ZEFRAMis
 
 Many thanks to Gisle Aas <GAAS@cpan.org> for his patch to make
 "t/02_____destroy.t" pass on perl-5.17.11.
+
+Many thanks to A. Bernardo Carvalho <bernardo@biologia.ufrj.br> for letting
+me use his modification of ToolBox.h in order to allow bit vectors with more
+than 2^32 bits. On most machines this will allow bit vectors with up to 2^64
+bits. He needed this for and successfully used it in his research in genomics.
+See http://www.ncbi.nlm.nih.gov/pubmed/23921660 or
+http://genome.cshlp.org/content/early/2013/08/06/gr.156034.113.abstract
+for his corresponding paper.
+
 

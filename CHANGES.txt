@@ -1,5 +1,5 @@
                     =====================================
-                      Package "Bit::Vector" Version 7.3
+                      Package "Bit::Vector" Version 7.4
                     =====================================
 
 
@@ -9,6 +9,10 @@
 
 Version history:
 ----------------
+
+Version 7.4   03.09.2013
+
+ +  Modified ToolBox.h to allow bit vectors with more than 2^32 bits
 
 Version 7.3   01.06.2013
 

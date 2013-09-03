@@ -1,5 +1,5 @@
                     =====================================
-                      Package "Bit::Vector" Version 7.3
+                      Package "Bit::Vector" Version 7.4
                     =====================================
 
 
@@ -30,10 +30,10 @@ overloaded operators for maximum ease of use.
 The C library can nevertheless be used stand-alone, without Perl.
 
 
-What's new in version 7.3:
+What's new in version 7.4:
 --------------------------
 
- +  Fixed t/02_____destroy.t to make it pass on perl-5.17.11
+ +  Modified ToolBox.h to allow bit vectors with more than 2^32 bits
 
 
 What's new since version 6.5:
@@ -129,7 +129,7 @@ the "zip" archive.
 Note to CPAN Testers:
 ---------------------
 
-After completion, version 7.3 of this module has already
+After completion, version 7.4 of this module has already
 been tested successfully with the following configurations:
 
   Perl 5.12.3    -  FreeBSD 8.2-PRERELEASE
